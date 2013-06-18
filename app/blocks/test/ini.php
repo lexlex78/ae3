@@ -1,0 +1,4 @@
+<? return array (
+    'blocks'=>'test'
+    
+);

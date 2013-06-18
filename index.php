@@ -1,4 +1,4 @@
 <?
 include 'core/core.php';
-//app::run();
+app::run();
 
