@@ -1,4 +1,4 @@
 <? return array (
-    'blocks'=>'test'
+    'blocks'=>'1'
     
 );
