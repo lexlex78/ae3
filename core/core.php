@@ -72,6 +72,10 @@ class request {
     }
     
     public function clean($data) {
+    	
+    	//заменить array_map
+    	//stripslashes
+    	
         if (is_array($data)) {
 	  		foreach ($data as $key => $value) {
 				unset($data[$key]);
@@ -84,6 +88,12 @@ class request {
 
 		return $data;
 	}
+	
+public function getIsAjaxRequest()
+	{
+		return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH']==='XMLHttpRequest';
+	}	
+	
 
 }
 
