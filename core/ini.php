@@ -1,5 +1,6 @@
 <?php
-class ini {
+
+class ini_core {
 
     public $ini;
     public $site_dir;
@@ -22,8 +23,24 @@ class ini {
     }
 
     // загрузка всех ини приложения
-    function load() {
-        $this->ini = $this->load_ini($this->site_dir . '/app/ini.php');
+}
+
+class ini extends ini_core {
+
+    function __construct() {
+        parent::__construct();
+        $this->load_all();
+    }
+
+    function load_all() {
+        global $temp_debug;
+        if (isset($temp_debug)){
+            $this->ini = $temp_debug;
+            unset ($temp_debug);
+        }
+        else
+            $this->ini = $this->load_ini($this->site_dir . '/app/ini.php');
+
         foreach ($this->ini['blocks'] as $v) {
             $this->ini['blocks_ini'][$v] = $this->load_ini($this->site_dir . '/app/blocks/' . $v . '/ini.php');
         }

@@ -1,5 +1,6 @@
 <? return
 array(
- 'blocks'=>array('test')   
+ 'blocks'=>array('test'),
+ 'debug'=>1,
     
 ); 
