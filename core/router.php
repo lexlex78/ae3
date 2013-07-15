@@ -15,8 +15,9 @@ class router {
             
             foreach ($v['rules'] as $vv) {
                 
-            //     
-            if ($vv['url']){
+            unset($c,$a,$var);
+            
+            if ($vv['uri']){
                  
                     if(preg_match('~'.$vv['url'].'~',app::$request->uri, $pvar)){
                     $t=explode('/', $vv['run']);
@@ -24,24 +25,21 @@ class router {
                     if (strstr($t[1],'$')!=FALSE) $t[1]=$pvar[substr($t[1], 1)];
                     $c=$t[0];
                     $a=$t[1];
-                    $var=1;
-                                            
+                    foreach ($vv['var'] as $kkk=>$vvv){
+                    $var[$kkk]=$pvar[substr($vvv, 1)] ;  
                     }
-//                    print_a ($pvar);
-//                    echo $k.'<hr>';
+                                            
+                    } else unset($c,$a,$var);
                  
-             } else unset($c,$a,$var);
+             }
              
-             echo $c.' - '.$a;
-             print_a ($var);
-             echo '<hr>';
              
-                  
+         if ($c and $a) app::$stack[]=array($k,$c,$a,$var); 
             }
             
         }   
         
-        
+        print_a(app::$stack);
         
     }
     
