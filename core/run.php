@@ -39,10 +39,10 @@ class app {
         self::$ini = new ini;
 
         // разбираем и обробатывем запрос
-        self::$request = new request;
+       self::$request = new request;
 
         // загружаем все роутеры
-        self::$router = new router;
+       self::$router = new router;
 
         // print_a(self::$ini->ini);
         // работа с базой
@@ -52,7 +52,7 @@ class app {
         // запуск очереди на выполнение (стек выполнения)
 
 
-      //  print_a(self::$ini);
+         print_a(self::$stack);
 
 
 
